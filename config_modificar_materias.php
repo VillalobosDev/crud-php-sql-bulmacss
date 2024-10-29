@@ -5,9 +5,9 @@ error_reporting( ~E_NOTICE );
 include "conexion/conexion.php";
 
 if(isset($_POST['modificar'])){
-$sql=$DB_con->prepare("UPDATE sexo SET sexo=:sexo WHERE id_sexo=:id_sexo");
-$sql->bindParam(':sexo',$_POST['sexo']);
-$sql->bindParam(':id_sexo',$_GET['id_sexo']);
+$sql=$DB_con->prepare("UPDATE materias SET materias=:materias WHERE id_materias=:id_materias");
+$sql->bindParam(':materias',$_POST['materias']);
+$sql->bindParam(':id_materias',$_GET['id_materias']);
 $sql->execute();
 if($sql)
   {
@@ -24,6 +24,6 @@ if($sql)
 
      }
   }
-header('location: sexo.php');
+header('location: materias.php');
 ?>
 <!-- FIN PROCESO PARA ACTUALIZAR -->
