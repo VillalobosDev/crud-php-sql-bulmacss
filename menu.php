@@ -17,6 +17,7 @@
         <a class="navbar-link">Configuración del Sistema</a>
         <div class="navbar-dropdown">
         <a class="navbar-item" href="sexo.php">Sexo</a>
+        <a class="navbar-item" href="pnf.php">PNF</a>
         </div>
       </div>
 
@@ -29,6 +30,8 @@
           <a class="navbar-item" href="materias.php">Materias</a>
           <hr class="navbar-divider">
           <a class="navbar-item" href="inscripcion.php">Inscripción</a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="pensum_de_estudio.php">Pensum de Estudio</a>
         </div>
       </div>
 

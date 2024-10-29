@@ -73,10 +73,10 @@ include "conexion/conexion.php";
 
 
 <article class="panel is-link">
-  <p class="panel-heading has-text-centered has-text-weight-normal is-size-7">LISTADO GENERAL MATERIAS</p>
+  <p class="panel-heading has-text-centered has-text-weight-normal is-size-7">LISTADO GENERAL PNF</p>
 
 <?php
-$consulta = $DB_con->query("SELECT * FROM materias ORDER BY id_materias;");
+$consulta = $DB_con->query("SELECT * FROM pnf ORDER BY id_pnf;");
 
 if($consulta->rowCount() > 0){
 $i=1;
@@ -86,7 +86,7 @@ $i=1;
           <tr>
               <th class="has-text-centered has-text-weight-normal">N°</th>
               <th class="has-text-centered has-text-weight-normal">ID-BD</th>
-              <th class="has-text-centered has-text-weight-normal">Materias</th>
+              <th class="has-text-centered has-text-weight-normal">PNF</th>
               <th class="has-text-centered has-text-weight-normal">Acciones</th>
           </tr>
         </thead>
@@ -98,14 +98,14 @@ echo "
         <tbody>
           <tr>
             <td class='has-text-centered'>$i</td>";?>
-            <td><?php echo $linea['id_materias']; ?></td>
-            <td><?php echo $linea['materias']; ?></td>           
+            <td><?php echo $linea['id_pnf']; ?></td>
+            <td><?php echo $linea['pnf']; ?></td>           
 <td>
 
-<button data-target="#modificar_<?php echo $linea['id_materias']; ?>" 
+<button data-target="#modificar_<?php echo $linea['id_pnf']; ?>" 
 class='button is-small is-responsive is-link js-modal-trigger'>Modificar</button>
 
-<button data-target="#eliminar_<?php echo $linea['id_materias']; ?>" 
+<button data-target="#eliminar_<?php echo $linea['id_pnf']; ?>" 
 class='button is-small is-responsive is-danger js-modal-trigger' >Eliminar</button>
 
 </td>
@@ -113,8 +113,8 @@ class='button is-small is-responsive is-danger js-modal-trigger' >Eliminar</butt
 <!-- ventana modal-->
 
 <?php
-include "ventana_modal_modificar_materias.php";
-include "ventana_modal_eliminar_materias.php";
+include "ventana_modal_modificar_pnf.php";
+include "ventana_modal_eliminar_pnf.php";
 ?>
 
 <!-- fin ventana modal-->
@@ -143,12 +143,12 @@ echo "</table>";
 <div class="control">
 <div class="tags has-addons is-right is-small">
 <?php
-$consulta = $DB_con->query("SELECT * FROM materias");
+$consulta = $DB_con->query("SELECT * FROM pnf");
 $consulta->execute();
-$materias = $consulta->rowCount();
+$pnf = $consulta->rowCount();
 ?>
       <span class="tag is-dark">Total registros:</span>
-      <span class="tag is-success"><?php print("$materias\n"); ?></span>
+      <span class="tag is-success"><?php print("$pnf\n"); ?></span>
 </div>
 </div>
 
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- ventana modal-->
 <?php
-include "ventana_modal_agregar_materias.php";
+include "ventana_modal_agregar_pnf.php";
 ?>
 <!-- fin ventana modal-->
   </body>
