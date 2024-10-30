@@ -19,8 +19,10 @@ if(isset($_POST['agregar'])){
     else
     {
 
-$sql=$DB_con->prepare("INSERT INTO materias (materias) VALUES (:materias)");
+$sql=$DB_con->prepare("INSERT INTO materias (materias, id_pnf) 
+                                          VALUES (:materias, :id_pnf)");
 $sql->bindParam(':materias', $_POST['materias']);
+$sql->bindParam(':id_pnf', $_POST['id_pnf']);
 $sql->execute();
 
           $_SESSION['successMSG'] ="Registro insertado correctamente";

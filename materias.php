@@ -87,6 +87,7 @@ $i=1;
               <th class="has-text-centered has-text-weight-normal">N°</th>
               <th class="has-text-centered has-text-weight-normal">ID-BD</th>
               <th class="has-text-centered has-text-weight-normal">Materias</th>
+              <th class="has-text-centered has-text-weight-normal">PNF</th>
               <th class="has-text-centered has-text-weight-normal">Acciones</th>
           </tr>
         </thead>
@@ -100,6 +101,7 @@ echo "
             <td class='has-text-centered'>$i</td>";?>
             <td><?php echo $linea['id_materias']; ?></td>
             <td><?php echo $linea['materias']; ?></td>           
+            <td><?php echo $linea['pnf']; ?></td>           
 <td>
 
 <button data-target="#modificar_<?php echo $linea['id_materias']; ?>" 

@@ -18,7 +18,24 @@
         autocomplete="off" title="Solo se permiten letras y espacios" required/>
       </div>
     </div>
-  
+
+      <div class="field">
+        <label for="" class="label">PNF</label>
+        <div class="control is-expanded"></div>
+        <div class="select is-small is-fullwidth">
+          <select name="id_pnf" id="" required="required">
+            <option value="" disabled="disabled" selected="selected">Seleccione una opción</option>
+              <?php
+                $consulta = $DB_con->query("SELECT * FROM pnf ORDER BY id_pnf");
+                while ($linea = $consulta->fetch(PDO::FETCH_ASSOC)) {
+              ?>
+              <option value="<?php echo $linea['id_pnf'] ;?>"><?php echo $linea['pnf'];?></option>
+              <?php
+              }
+              ?>
+          </select>
+        </div>
+      </div>
   
       </section>
       <footer class="modal-card-foot">
@@ -31,7 +48,6 @@
         <button class="button is-small">CANCELAR</button>
         </p>
         </div>
-  
       </footer>
       </form>
     </div>
