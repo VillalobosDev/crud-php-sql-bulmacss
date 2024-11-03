@@ -76,7 +76,14 @@ include "conexion/conexion.php";
   <p class="panel-heading has-text-centered has-text-weight-normal is-size-7">LISTADO GENERAL MATERIAS</p>
 
 <?php
-$consulta = $DB_con->query("SELECT * FROM materias ORDER BY id_materias;");
+$consulta = $DB_con->query("SELECT 
+materias.id_materias,
+materias.materias,
+materias.id_pnf,
+pnf.pnf
+#pnd.id_pnf
+FROM materias 
+INNER JOIN pnf ON materias.id_pnf = pnf.id_pnf ORDER BY id_materias;");
 
 if($consulta->rowCount() > 0){
 $i=1;
