@@ -36,6 +36,18 @@
       </div>
 
 
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">Configuración del Docente</a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="docentes.php">Docentes</a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="materias_del_docente.php">Materias del Docente</a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="alumnos_asignados_docentes.php">Inscripción</a>
+        </div>
+      </div>
+
+
             <a class="navbar-item" href="estudiantes_masculino.php">Estudiantes Maculino</a>
 
             <a class="navbar-item" href="estudiantes_femenino.php">Estudiantes Femenino</a>
