@@ -31,7 +31,7 @@
           <hr class="navbar-divider">
           <a class="navbar-item" href="inscripcion.php">Inscripción</a>
           <hr class="navbar-divider">
-          <a class="navbar-item" href="pensum_de_estudio.php">Pensum de Estudio</a>
+          <a class="navbar-item" href="pensum.php">Pensum de Estudio</a>
         </div>
       </div>
 

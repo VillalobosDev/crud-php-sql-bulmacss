@@ -104,7 +104,7 @@ $i=1;
               <th class="has-text-centered has-text-weight-normal">Cédula</th>
               <th class="has-text-centered has-text-weight-normal">Nombres</th>
               <th class="has-text-centered has-text-weight-normal">Apellidos</th>
-              <th class="has-text-centered has-text-weight-normal">Sexo</th>
+              <th class="has-text-centered has-text-weight-normal">Número</th>
               <th class="has-text-centered has-text-weight-normal">Acciones</th>
           </tr>
         </thead>

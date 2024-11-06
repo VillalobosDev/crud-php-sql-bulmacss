@@ -79,10 +79,12 @@ include "conexion/conexion.php";
 $consulta = $DB_con->query("SELECT 
 materias.id_materias,
 materias.materias,
-materias.id_pnf,
-pnf.pnf
-FROM materias 
-INNER JOIN pnf ON materias.id_pnf = pnf.id_pnf ORDER BY id_materias;");
+trayectos.id_trayectos,
+trayectos.trayectos,
+pnf.pnf,
+pnf.id_pnf
+FROM materias
+INNER JOIN materias ON pnf.id_pnf = materias.id_pnf;");
 
 if($consulta->rowCount() > 0){
 $i=1;
@@ -105,15 +107,15 @@ echo "
         <tbody>
           <tr>
             <td class='has-text-centered'>$i</td>";?>
-            <td><?php echo $linea['id_materias']; ?></td>
-            <td><?php echo $linea['materias']; ?></td>           
+            <td><?php echo $linea['id_trayectos']; ?></td>
+            <td><?php echo $linea['trayectos']; ?></td>           
             <td><?php echo $linea['pnf']; ?></td>           
 <td>
 
-<button data-target="#modificar_<?php echo $linea['id_materias']; ?>" 
+<button data-target="#modificar_<?php echo $linea['id_trayectos']; ?>" 
 class='button is-small is-responsive is-link js-modal-trigger'>Modificar</button>
 
-<button data-target="#eliminar_<?php echo $linea['id_materias']; ?>" 
+<button data-target="#eliminar_<?php echo $linea['id_trayectos']; ?>" 
 class='button is-small is-responsive is-danger js-modal-trigger' >Eliminar</button>
 
 </td>
@@ -121,8 +123,8 @@ class='button is-small is-responsive is-danger js-modal-trigger' >Eliminar</butt
 <!-- ventana modal-->
 
 <?php
-include "ventana_modal_modificar_materias.php";
-include "ventana_modal_eliminar_materias.php";
+include "ventana_modal_modificar_trayectos.php";
+include "ventana_modal_eliminar_trayectos.php";
 ?>
 
 <!-- fin ventana modal-->
@@ -151,12 +153,12 @@ echo "</table>";
 <div class="control">
 <div class="tags has-addons is-right is-small">
 <?php
-$consulta = $DB_con->query("SELECT * FROM materias");
+$consulta = $DB_con->query("SELECT * FROM trayectos");
 $consulta->execute();
-$materias = $consulta->rowCount();
+$trayectos = $consulta->rowCount();
 ?>
       <span class="tag is-dark">Total registros:</span>
-      <span class="tag is-success"><?php print("$materias\n"); ?></span>
+      <span class="tag is-success"><?php print("$trayectos\n"); ?></span>
 </div>
 </div>
 
@@ -227,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- ventana modal-->
 <?php
-include "ventana_modal_agregar_materias.php";
+include "ventana_modal_agregar_trayectos.php";
 ?>
 <!-- fin ventana modal-->
   </body>

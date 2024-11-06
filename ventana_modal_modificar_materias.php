@@ -14,7 +14,26 @@
       <input class="input is-small" type="text" name="materias" value="<?php echo $linea['materias']; ?>">
     </div>
   </div>
+
+  <div class="field">
+        <label for="" class="label">PNF</label>
+        <div class="control is-expanded"></div>
+        <div class="select is-small is-fullwidth">
+          <select name="id_pnf" id="" required="required">
+            <option value="" disabled="disabled" selected="selected">Seleccione una opción</option>
+              <?php
+                $consulta = $DB_con->query("SELECT * FROM pnf ORDER BY id_pnf");
+                while ($linea = $consulta->fetch(PDO::FETCH_ASSOC)) {
+              ?>
+              <option value="<?php echo $linea['id_pnf'] ;?>"><?php echo $linea['pnf'];?></option>
+              <?php
+              }
+              ?>
+          </select>
+        </div>
+      </div>
     </section>
+    
     <footer class="modal-card-foot">
 
     <div class="field is-grouped">
