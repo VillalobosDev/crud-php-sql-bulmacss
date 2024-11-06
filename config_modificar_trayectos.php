@@ -4,6 +4,9 @@ session_start(); // Iniciar la sesión al principio del archivo
 error_reporting( ~E_NOTICE );
 include "conexion/conexion.php";
 
+
+
+
 if(isset($_POST['modificar'])){
 $sql=$DB_con->prepare("UPDATE materias SET materias=:materias WHERE id_materias=:id_materias");
 $sql->bindParam(':materias',$_POST['materias']);

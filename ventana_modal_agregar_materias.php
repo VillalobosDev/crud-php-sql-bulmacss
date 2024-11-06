@@ -23,7 +23,7 @@
         <label for="" class="label">PNF</label>
         <div class="control is-expanded"></div>
         <div class="select is-small is-fullwidth">
-          <select name="id_pnf" id="" required="required">
+          <select name="id_pnf" required="required">
             <option value="" disabled="disabled" selected="selected">Seleccione una opción</option>
               <?php
                 $consulta = $DB_con->query("SELECT * FROM pnf ORDER BY id_pnf");

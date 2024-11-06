@@ -17,19 +17,25 @@
 
   <div class="field">
         <label for="" class="label">PNF</label>
-        <div class="control is-expanded"></div>
-        <div class="select is-small is-fullwidth">
-          <select name="id_pnf" id="" required="required">
-            <option value="" disabled="disabled" selected="selected">Seleccione una opción</option>
-              <?php
-                $consulta = $DB_con->query("SELECT * FROM pnf ORDER BY id_pnf");
-                while ($linea = $consulta->fetch(PDO::FETCH_ASSOC)) {
-              ?>
-              <option value="<?php echo $linea['id_pnf'] ;?>"><?php echo $linea['pnf'];?></option>
-              <?php
-              }
-              ?>
-          </select>
+        <div class="control is-expanded">
+          <div class="select is-small is-fullwidth">
+            <select name="id_pnf" id="id_pnf" required>
+              <option value="" disabled selected>Seleccione una opción</option>
+                <?php
+                  $consulta1 = $DB_con->query("SELECT * FROM pnf ORDER BY id_pnf");
+                  while ($linea_pnf = $consulta1->fetch(PDO::FETCH_ASSOC)) {
+                    $selected = '';
+                    if($linea_pnf['id_pnf'] == $linea['id_pnf']) {
+                      $selected = 'selected';
+                    }
+                ?>
+                <option value="<?php echo $linea_pnf['id_pnf'] ;?>"<?php echo $selected; ?>><?php echo $linea_pnf['pnf'] ;?></option>
+                <?php
+                  }
+
+                ?>
+            </select>
+          </div>
         </div>
       </div>
     </section>

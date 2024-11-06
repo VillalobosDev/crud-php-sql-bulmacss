@@ -7,7 +7,7 @@ include "conexion/conexion.php";
 if(isset($_POST['modificar'])){
 $sql=$DB_con->prepare("UPDATE materias SET materias=:materias, id_pnf=:id_pnf WHERE id_materias=:id_materias");
 $sql->bindParam(':materias',$_POST['materias']);
-$sql->bindParam(':id_pnf',$_GET['id_pnf']);
+$sql->bindParam(':id_pnf',$_POST['id_pnf']);
 $sql->bindParam(':id_materias',$_GET['id_materias']);
 $sql->execute();
 if($sql)
