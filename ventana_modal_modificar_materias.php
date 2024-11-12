@@ -38,6 +38,30 @@
           </div>
         </div>
       </div>
+  
+      <div class="field">
+        <label for="" class="label">Trayectos</label>
+        <div class="control is-expanded">
+          <div class="select is-small is-fullwidth">
+            <select name="id_trayectos" id="id_trayectos" required>
+              <option value="" disabled selected>Seleccione una opción</option>
+                <?php
+                  $consulta1 = $DB_con->query("SELECT * FROM trayectos ORDER BY id_trayectos");
+                  while ($linea_trayectos = $consulta1->fetch(PDO::FETCH_ASSOC)) {
+                    $selected = '';
+                    if($linea_trayectos['id_trayectos'] == $linea['id_trayectos']) {
+                      $selected = 'selected';
+                    }
+                ?>
+                <option value="<?php echo $linea_trayectos['id_trayectos'] ;?>"<?php echo $selected; ?>><?php echo $linea_trayectos['trayectos'] ;?></option>
+                <?php
+                  }
+
+                ?>
+            </select>
+          </div>
+        </div>
+      </div>
     </section>
     
     <footer class="modal-card-foot">

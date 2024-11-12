@@ -73,23 +73,12 @@ include "conexion/conexion.php";
 
 
 <article class="panel is-link">
-  <p class="panel-heading has-text-centered has-text-weight-normal is-size-7">LISTADO GENERAL MATERIAS</p>
+  <p class="panel-heading has-text-centered has-text-weight-normal is-size-7">LISTADO GENERAL TRAYECTOS</p>
 
 <?php
-$consulta = $DB_con->query("SELECT 
-materias.id_materias,
-materias.materias,
-materias.id_pnf,
-pnf.pnf
-FROM materias 
-INNER JOIN pnf ON materias.id_pnf = pnf.id_pnf ORDER BY id_materias;");
+$consulta = $DB_con->query("SELECT * FROM trayectos ORDER BY id_trayectos;");
 
-$consulta2 = $DB_con->query("SELECT 
-trayectos.id_trayectos,
-trayectos.trayectos
-FROM trayectos");
-
-if($consulta->rowCount() > 0 and $consulta2->rowCount() > 0)  {
+if($consulta->rowCount() > 0){
 $i=1;
  ?>
  <table id="myTable" class="table is-hoverable table is-mobile is-fullwidth has-text-centered">
@@ -97,7 +86,6 @@ $i=1;
           <tr>
               <th class="has-text-centered has-text-weight-normal">N°</th>
               <th class="has-text-centered has-text-weight-normal">ID-BD</th>
-              <th class="has-text-centered has-text-weight-normal">PNF</th>
               <th class="has-text-centered has-text-weight-normal">Trayecto</th>
               <th class="has-text-centered has-text-weight-normal">Acciones</th>
           </tr>
@@ -110,22 +98,14 @@ echo "
         <tbody>
           <tr>
             <td class='has-text-centered'>$i</td>";?>
-            <td><?php echo $linea['id_pnf']; ?></td>
-            <td><?php echo $linea['pnf']; ?></td>           
-            <?php
-            $trayectosQuery = "SELECT * FROM trayectos";
-            $result = $DB_con->query($trayectosQuery);
-            while ($trayecto = $result->fetch(PDO::FETCH_ASSOC)) {
-              echo "<td><a href='ventana_modal_trayectos.php?id_trayecto=" . $trayecto['id_trayectos'] . " '>" . $trayecto['trayectos'] . "</a></td>";
-            }
-            ?>
-
+            <td><?php echo $linea['id_trayectos']; ?></td>
+            <td><?php echo $linea['trayectos']; ?></td>           
 <td>
 
-<button data-target="#modificar_<?php echo $linea['id_materias']; ?>" 
+<button data-target="#modificar_<?php echo $linea['id_trayectos']; ?>" 
 class='button is-small is-responsive is-link js-modal-trigger'>Modificar</button>
 
-<button data-target="#eliminar_<?php echo $linea['id_materias']; ?>" 
+<button data-target="#eliminar_<?php echo $linea['id_trayectos']; ?>" 
 class='button is-small is-responsive is-danger js-modal-trigger' >Eliminar</button>
 
 </td>
@@ -133,10 +113,8 @@ class='button is-small is-responsive is-danger js-modal-trigger' >Eliminar</butt
 <!-- ventana modal-->
 
 <?php
-include "ventana_modal_modificar_materias.php";
-include "ventana_modal_eliminar_materias.php";
-include "ventana_modal_trayectos.php";
-
+include "ventana_modal_modificar_trayectos.php";
+include "ventana_modal_eliminar_trayectos.php";
 ?>
 
 <!-- fin ventana modal-->
@@ -165,12 +143,12 @@ echo "</table>";
 <div class="control">
 <div class="tags has-addons is-right is-small">
 <?php
-$consulta = $DB_con->query("SELECT * FROM materias");
+$consulta = $DB_con->query("SELECT * FROM trayectos");
 $consulta->execute();
-$materias = $consulta->rowCount();
+$trayectos = $consulta->rowCount();
 ?>
       <span class="tag is-dark">Total registros:</span>
-      <span class="tag is-success"><?php print("$materias\n"); ?></span>
+      <span class="tag is-success"><?php print("$trayectos\n"); ?></span>
 </div>
 </div>
 
@@ -241,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- ventana modal-->
 <?php
-include "ventana_modal_agregar_materias.php";
+include "ventana_modal_agregar_trayectos.php";
 ?>
 <!-- fin ventana modal-->
   </body>

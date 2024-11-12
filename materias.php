@@ -80,9 +80,14 @@ $consulta = $DB_con->query("SELECT
 materias.id_materias,
 materias.materias,
 materias.id_pnf,
+trayectos.id_trayectos,
+trayectos.trayectos,
 pnf.pnf
 FROM materias 
-INNER JOIN pnf ON materias.id_pnf = pnf.id_pnf ORDER BY id_materias;");
+INNER JOIN trayectos ON materias.id_trayectos = trayectos.id_trayectos
+INNER JOIN pnf ON materias.id_pnf = pnf.id_pnf
+ORDER BY materias.id_materias;");
+
 
 if($consulta->rowCount() > 0){
 $i=1;
@@ -94,6 +99,7 @@ $i=1;
               <th class="has-text-centered has-text-weight-normal">ID-BD</th>
               <th class="has-text-centered has-text-weight-normal">Materias</th>
               <th class="has-text-centered has-text-weight-normal">PNF</th>
+              <th class="has-text-centered has-text-weight-normal">Trayecto</th>
               <th class="has-text-centered has-text-weight-normal">Acciones</th>
           </tr>
         </thead>
@@ -108,6 +114,7 @@ echo "
             <td><?php echo $linea['id_materias']; ?></td>
             <td><?php echo $linea['materias']; ?></td>           
             <td><?php echo $linea['pnf']; ?></td>           
+            <td><?php echo $linea['trayectos']; ?></td>           
 <td>
 
 <button data-target="#modificar_<?php echo $linea['id_materias']; ?>" 
