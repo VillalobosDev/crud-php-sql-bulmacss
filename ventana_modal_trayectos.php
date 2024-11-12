@@ -11,14 +11,14 @@
         // Llamamos las materias asociadas con el trayecto y el pnf
         $materiasQuery = "SELECT materias.materias FROM materias 
                           WHERE materias.id_trayectos = :id_trayecto AND materias.id_pnf = :id_pnf";
-        $stmt = $DB_con->prepare($materiasQuery);
-        $stmt->bindParam(':id_trayecto', $linea['id_trayectos']);
-        $stmt->bindParam(':id_pnf', $linea['id_pnf']);
-        $stmt->execute();
+        $mostrar_materias = $DB_con->prepare($materiasQuery);
+        $mostrar_materias->bindParam(':id_trayecto', $linea['id_trayectos']);
+        $mostrar_materias->bindParam(':id_pnf', $linea['id_pnf']);
+        $mostrar_materias->execute();
 
-        // Check if materias exist
-        if ($stmt->rowCount() > 0) {
-            while ($materia = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        // Check if materias
+        if ($mostrar_materias->rowCount() > 0) {
+            while ($materia = $mostrar_materias->fetch(PDO::FETCH_ASSOC)) {
                 echo "<li>" . htmlspecialchars($materia['materias']) . "</li>";
             }
         } else {

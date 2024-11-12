@@ -120,9 +120,11 @@ echo "
 <button data-target="#modificar_<?php echo $linea['id_materias']; ?>" 
 class='button is-small is-responsive is-link js-modal-trigger'>Modificar</button>
 
+</td>
+<td>
+
 <button data-target="#eliminar_<?php echo $linea['id_materias']; ?>" 
 class='button is-small is-responsive is-danger js-modal-trigger' >Eliminar</button>
-
 </td>
 </tr>
 <!-- ventana modal-->
