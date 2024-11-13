@@ -10,9 +10,9 @@ if(isset($_POST['agregar'])){
   $check->bindParam(':materias', $_POST['materias']);//Substituimos las variables de la SELECT
   $check->execute();//Ejecutamos la consulta
   $contador = $check -> rowCount();//Esta función devuelve el número de resultados que ha devuelto la SELECT
-  if ($contador > 0) {
+  if ($contador > 1) {
   $check->closeCursor();
-    
+      
               $_SESSION['errMSG'] = "El registro ya se encuentra insertado";
 
     }
