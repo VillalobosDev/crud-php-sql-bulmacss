@@ -33,7 +33,7 @@ include "conexion/conexion.php";
 
         <div class="field is-grouped is-grouped-right">
           <p class="control">
-            <button class="button is-primary is-small js-modal-trigger" data-target="modal-js-example" aria-haspopup="true">+ Agregar</button>
+          <!-- <button class="button is-primary is-small js-modal-trigger" data-target="modal-js-example" aria-haspopup="true">+ Agregar</button>-->
           </p>
         </div>
 

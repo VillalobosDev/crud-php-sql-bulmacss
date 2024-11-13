@@ -5,7 +5,7 @@ error_reporting( ~E_NOTICE );
 include "conexion/conexion.php";
 
 if(isset($_POST['agregar'])){
-  $sql = "SELECT materias FROM materias WHERE materias = :materias LIMIT 1"; //Creamos la select
+  $sql = "SELECT materias, id_pnf, id_trayectos FROM materias WHERE materias = :materias AND id_pnf = :id_pnf AND id_trayectos = :id_trayectos LIMIT  1"; //Creamos la select
   $check = $DB_con->prepare($sql); //Preparamos la SELECT, de ésta manera evitamos SQL Injection
   $check->bindParam(':materias', $_POST['materias']);//Substituimos las variables de la SELECT
   $check->execute();//Ejecutamos la consulta

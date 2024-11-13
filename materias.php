@@ -240,4 +240,4 @@ include "ventana_modal_agregar_materias.php";
 ?>
 <!-- fin ventana modal-->
   </body>
-</html>
+12
