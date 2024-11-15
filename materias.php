@@ -116,7 +116,6 @@ echo "
             <td><?php echo $linea['pnf']; ?></td>           
             <td><?php echo $linea['trayectos']; ?></td>           
 <td>
-
 <button data-target="#modificar_<?php echo $linea['id_materias']; ?>" 
 class='button is-small is-responsive is-link js-modal-trigger'>Modificar</button>
 
