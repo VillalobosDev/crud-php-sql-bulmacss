@@ -76,7 +76,8 @@ include "conexion/conexion.php";
   <p class="panel-heading has-text-centered has-text-weight-normal is-size-7">LISTADO GENERAL SEXO</p>
 
 <?php
-$consulta = $DB_con->query("SELECT * FROM sexo ORDER BY id_sexo;");
+$consulta = $DB_con->prepare("SELECT * FROM sexo ORDER BY id_sexo;");
+$consulta->execute();//Ejecutamos la consulta
 
 if($consulta->rowCount() > 0){
 $i=1;
