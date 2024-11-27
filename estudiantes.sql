@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2024 at 11:31 PM
+-- Generation Time: Nov 14, 2024 at 10:59 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `docentes` (
-  `id_docente` int(11) NOT NULL,
+  `id_docentes` int(11) NOT NULL,
   `cedula` int(8) NOT NULL,
   `nombres` varchar(45) NOT NULL,
   `apellidos` varchar(45) NOT NULL,
@@ -43,8 +43,8 @@ CREATE TABLE `docentes` (
 -- Dumping data for table `docentes`
 --
 
-INSERT INTO `docentes` (`id_docente`, `cedula`, `nombres`, `apellidos`, `edad`, `fecha_nacimiento`, `id_sexo`, `correo`, `telefono`) VALUES
-(1, 14622737, 'OSWALDO JOSE', 'AVILAN RODRIGUEZ', 42, '1982-06-03', 1, 'yoclens@gmail.com', '04129487984');
+INSERT INTO `docentes` (`id_docentes`, `cedula`, `nombres`, `apellidos`, `edad`, `fecha_nacimiento`, `id_sexo`, `correo`, `telefono`) VALUES
+(4, 18897724, 'Pedro', 'Guerra', 37, '1986-11-21', 1, 'pg9999@gmail.com', '042489898988');
 
 -- --------------------------------------------------------
 
@@ -96,15 +96,21 @@ CREATE TABLE `inscripcion` (
 CREATE TABLE `materias` (
   `id_materias` int(11) NOT NULL,
   `materias` varchar(45) NOT NULL,
-  `id_pnf` int(11) NOT NULL
+  `id_pnf` int(11) NOT NULL,
+  `id_trayectos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `materias`
 --
 
-INSERT INTO `materias` (`id_materias`, `materias`, `id_pnf`) VALUES
-(14, 'Matemáticas', 1);
+INSERT INTO `materias` (`id_materias`, `materias`, `id_pnf`, `id_trayectos`) VALUES
+(19, 'Matematicas TI', 1, 1),
+(20, 'Intro PST', 1, 1),
+(21, 'Introduccion a la programacion', 1, 1),
+(22, 'Introduccion a PST', 9, 2),
+(23, 'Anatomia', 9, 2),
+(24, 'Matematicas TI', 9, 2);
 
 -- --------------------------------------------------------
 
@@ -122,7 +128,8 @@ CREATE TABLE `pnf` (
 --
 
 INSERT INTO `pnf` (`id_pnf`, `pnf`) VALUES
-(1, 'Informatica');
+(1, 'Informatica'),
+(9, 'Fisioterapia');
 
 -- --------------------------------------------------------
 
@@ -143,6 +150,25 @@ INSERT INTO `sexo` (`id_sexo`, `sexo`) VALUES
 (1, 'Masculino'),
 (2, 'Femenino');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `trayectos`
+--
+
+CREATE TABLE `trayectos` (
+  `id_trayectos` int(11) NOT NULL,
+  `trayectos` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `trayectos`
+--
+
+INSERT INTO `trayectos` (`id_trayectos`, `trayectos`) VALUES
+(1, 'Trayecto Inicial Informatica'),
+(2, 'Trayecto Inicial Fisioterapia');
+
 --
 -- Indexes for dumped tables
 --
@@ -151,7 +177,7 @@ INSERT INTO `sexo` (`id_sexo`, `sexo`) VALUES
 -- Indexes for table `docentes`
 --
 ALTER TABLE `docentes`
-  ADD PRIMARY KEY (`id_docente`),
+  ADD PRIMARY KEY (`id_docentes`),
   ADD KEY `id_sexo` (`id_sexo`);
 
 --
@@ -175,7 +201,8 @@ ALTER TABLE `inscripcion`
 --
 ALTER TABLE `materias`
   ADD PRIMARY KEY (`id_materias`),
-  ADD KEY `id_pnf` (`id_pnf`);
+  ADD KEY `id_pnf` (`id_pnf`),
+  ADD KEY `id_trayectos` (`id_trayectos`);
 
 --
 -- Indexes for table `pnf`
@@ -190,6 +217,12 @@ ALTER TABLE `sexo`
   ADD PRIMARY KEY (`id_sexo`);
 
 --
+-- Indexes for table `trayectos`
+--
+ALTER TABLE `trayectos`
+  ADD PRIMARY KEY (`id_trayectos`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -197,7 +230,7 @@ ALTER TABLE `sexo`
 -- AUTO_INCREMENT for table `docentes`
 --
 ALTER TABLE `docentes`
-  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_docentes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `estudiantes`
@@ -209,19 +242,25 @@ ALTER TABLE `estudiantes`
 -- AUTO_INCREMENT for table `materias`
 --
 ALTER TABLE `materias`
-  MODIFY `id_materias` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_materias` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `pnf`
 --
 ALTER TABLE `pnf`
-  MODIFY `id_pnf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_pnf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `sexo`
 --
 ALTER TABLE `sexo`
   MODIFY `id_sexo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `trayectos`
+--
+ALTER TABLE `trayectos`
+  MODIFY `id_trayectos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -243,7 +282,7 @@ ALTER TABLE `estudiantes`
 -- Constraints for table `inscripcion`
 --
 ALTER TABLE `inscripcion`
-  ADD CONSTRAINT `inscripcion_ibfk_1` FOREIGN KEY (`id_docente`) REFERENCES `docentes` (`id_docente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `inscripcion_ibfk_1` FOREIGN KEY (`id_docente`) REFERENCES `docentes` (`id_docentes`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `inscripcion_ibfk_2` FOREIGN KEY (`id_materia`) REFERENCES `materias` (`id_materias`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `inscripcion_ibfk_3` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiantes` (`id_estudiantes`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -251,7 +290,8 @@ ALTER TABLE `inscripcion`
 -- Constraints for table `materias`
 --
 ALTER TABLE `materias`
-  ADD CONSTRAINT `materias_ibfk_1` FOREIGN KEY (`id_pnf`) REFERENCES `pnf` (`id_pnf`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `materias_ibfk_1` FOREIGN KEY (`id_pnf`) REFERENCES `pnf` (`id_pnf`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `materias_ibfk_2` FOREIGN KEY (`id_trayectos`) REFERENCES `trayectos` (`id_trayectos`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

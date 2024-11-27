@@ -19,6 +19,8 @@
         <a class="navbar-item" href="sexo.php">Sexo</a>
         <a class="navbar-item" href="pnf.php">PNF</a>
         <a class="navbar-item" href="trayectos.php">Trayectos</a>
+        <a class="navbar-item" href="usuario.php">Usuario</a>
+        <a class="navbar-item" href="nivel.php">Nivel</a>
         </div>
       </div>
 

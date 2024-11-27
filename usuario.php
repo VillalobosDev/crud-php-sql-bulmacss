@@ -20,7 +20,7 @@ include "conexion/conexion.php";
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>nivel II-II</title>
+    <title>ESTUDIANTES II-II</title>
     <link rel="icon" href="favicon/favicon.png">
     <link rel="stylesheet" href="css/bulma.min.css">
     <link rel="stylesheet" href="css/flatpickr.min.css">
@@ -67,7 +67,7 @@ include "conexion/conexion.php";
 
 <div class="field is-grouped is-grouped-left">
   <p class="control">
-  <a href="nivel.php">
+  <a href="agregar_nivel.php">
   <button class="button is-primary is-small">Volver</button>
   </a>
   </p>
@@ -75,13 +75,13 @@ include "conexion/conexion.php";
 
 
 <article class="panel is-link">
-  <p class="panel-heading has-text-centered has-text-weight-normal is-size-7">AGREGAR ESTUDIANTE</p>
+  <p class="panel-heading has-text-centered has-text-weight-normal is-size-7">AGREGAR NIVEl USUARIO</p>
 
 
 
 
 
-  <form class="box" action="config_agregar_nivel.php" name="frmContacto" method="POST">
+  <form class="box" action="config_agregar_usuarios.php" name="frmContacto" method="POST">
 
     
 <div class="field-body">
@@ -116,71 +116,63 @@ include "conexion/conexion.php";
 
 <div class="field-body">
 <div class="field">
-    <label class="label">Fecha de Nacimiento</label>
+    <label class="label">Correo</label>
     <div class="control">
-    <input class="input is-small" type="date" id="fecha_nac" 
-    name="fecha_nacimiento" placeholder="fecha de Nacimiento" 
+    <input class="input is-small" type="text" id="correo" 
+    name="correo" placeholder="Correo" 
     autocomplete="off"  title="Fecha" required/>
     </div>
 </div>
 
 
 <div class="field">
-    <label class="label">edad</label>
+    <label class="label">Contraseña</label>
     <div class="control">
-    <input class="input is-small" type="text" id="edad" 
-    name="edad" placeholder="edad" 
-    autocomplete="off"  title="Edad" required/>
+    <input class="input is-small" type="text" id="contrasena" 
+    name="contrasena" placeholder="Contraseña" 
+    autocomplete="off"  title="Contraseña" required/>
     </div>
 </div>
 
 
-<div class="field">
-<label class="label">Tipo de Sexo</label>
-<div class="control is-expanded">
- <div class="select is-small is-fullwidth">
-   <select name="id_sexo" required/>
-       <option value="" disabled selected>Seleccione Una Opción:</option>
-         <?php
-           $consulta = $DB_con->query("SELECT * FROM sexo ORDER BY id_sexo");
-           while ($linea = $consulta->fetch(PDO::FETCH_ASSOC)) {
-         ?>
-         <option value="<?php echo $linea['id_sexo'] ;?>"><?php echo $linea['sexo'] ;?></option>
-         <?php
-           }
-         ?>
-    </select>
- </div>
-</div>
-</div>
-</div>
 
-
-
+</div>
 
 <div class="field-body">
-<div class="field">
-    <label class="label">Correo</label>
+  <div class="field">
+    <label class="label">Teléfono</label>
     <div class="control">
-    <input class="input is-small" type="text" id="correo" name="correo" placeholder="Correo" autocomplete="off" 
-pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Formato de Correo @ .com" required/>
+       <input class="input is-small" type="text" id="telefono" 
+       name="telefono" placeholder="Teléfono" autocomplete="off" required/>
     </div>
   </div>
 
-
-
-
-  <div class="field">
-    <label class="label">Teléfono</label>
-   <div class="control">
-      <input class="input is-small" type="text" id="telefono" 
-      name="telefono" placeholder="Teléfono" autocomplete="off" required/>
-   </div>
+   <div class="field">
+          <label class="label">Tipo de Nivel</label>
+          <div class="control is-expanded">
+            <div class="select is-small is-fullwidth">
+              <select name="id_nivel" required/>
+                  <option value="" disabled selected>Seleccione Una Opción:</option>
+                    <?php
+                      $consulta = $DB_con->query("SELECT * FROM nivel ORDER BY id_nivel");
+                      while ($linea = $consulta->fetch(PDO::FETCH_ASSOC)) {
+                    ?>
+                    <option value="<?php echo $linea['id_nivel'] ;?>"><?php echo $linea['nivel'] ;?></option>
+                    <?php
+                      }
+                    ?>
+               </select>
+            </div>
+          </div>
+        </div>
 </div>
 
+     
+ 
 
 
-</div>
+
+</d>
 
 
 <br> <br>
@@ -188,7 +180,7 @@ pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Formato de Correo @ .com
 
 <div class="columns is-mobile is-centered">
            <div class="buttons">
-<button class="button is-primary is-small" type="submit" name="agregar">Agregar Estudiante</button>
+<button class="button is-primary is-small" type="submit" name="agregar">Agregar Nivel Usuario</button>
 
 </div> 
         </div>
